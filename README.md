@@ -6,6 +6,7 @@ This repo includes a collection of Python scripts built for web scraping. Result
 
 ### Requirements
   - [Selenium](https://pypi.org/project/selenium/)
+  - [Openpyxl](https://pypi.org/project/openpyxl/)
   - [BeautifulSoup](https://pypi.org/project/beautifulsoup4/)
   - [Requests](https://pypi.org/project/requests/)
   - [Pyautogui](https://pypi.org/project/PyAutoGUI/)
