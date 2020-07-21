@@ -1,7 +1,7 @@
 # Python-Scrapers
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0) [![Generic badge](https://img.shields.io/badge/HIRE-ME-brightgreen.svg)](https://www.upwork.com/o/profiles/users/~01839791ddb1ede3fa/)
 
-This repo includes a collection of Python scripts built for web scraping. Results are extracted and exported to csv or excel files. 
+This repo includes a collection of Python scripts and tools built for enabling web scraping. Results are extracted and exported to CSV or Excel files.
 
 
 ### Requirements
