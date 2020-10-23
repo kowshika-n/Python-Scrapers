@@ -2,30 +2,36 @@ import os
 import glob
 from csv import writer
 
-folderPath = r"Data"
+folderPath = r"C:\Users\"
 separator = " | "
 
 
-def AddToCSV(TextList):
-    with open("Output.csv", "a+", newline='') as output_file:
+def AddToCSV(file_name, TextList):
+    with open(file_name, "a+", newline='') as output_file:
         csv_writer = writer(output_file)
         csv_writer.writerow(TextList)
 
 
-def main():
+def combine(folderPath, text_filename_format, separator, output_filename):
     if not os.path.exists(folderPath):
-        print("Error: folder not exists")
+        print(f"Error: {folderPath} not exists")
     else:
         os.chdir(folderPath)
-        for file in glob.glob("*.txt"):
+        match_format = "*" + text_filename_format + "*.txt"
+        fileList = glob.glob(match_format)
+        if not fileList:
+            print(f'No files found matching {match_format}')
+        for file in fileList:
             print(file)
             with open(file, 'r') as f:
                 lineList = f.readlines()
+                TextList = []
                 for line in lineList:
                     TextList = line.split(separator)
-                    print(TextList)
-                    AddToCSV(TextList)
+                    Data_list = [elem.strip() if elem is not None else "" for elem in TextList ]
+                    print(Data_list)
+                    AddToCSV(output_filename, Data_list)
 
 
 if __name__ == '__main__':
-    main()
+    combine(folderPath, "listing", separator, "Output.csv")
