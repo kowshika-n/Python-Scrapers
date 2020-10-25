@@ -1,8 +1,9 @@
+# Useful to combine multiple text files extracted using userscripts
 import os
 import glob
 from csv import writer
 
-folderPath = r"C:\Users\"
+folderPath = r"C:\Users"
 separator = " | "
 
 
@@ -21,17 +22,21 @@ def combine(folderPath, text_filename_format, separator, output_filename):
         fileList = glob.glob(match_format)
         if not fileList:
             print(f'No files found matching {match_format}')
-        for file in fileList:
-            print(file)
-            with open(file, 'r') as f:
-                lineList = f.readlines()
-                TextList = []
-                for line in lineList:
-                    TextList = line.split(separator)
-                    Data_list = [elem.strip() if elem is not None else "" for elem in TextList ]
-                    print(Data_list)
-                    AddToCSV(output_filename, Data_list)
+        else:
+            fileList.sort(key=os.path.getmtime)
+            for file in fileList:
+                print(file)
+                with open(file, 'r') as f:
+                    lineList = f.readlines()
+                    TextList = []
+                    for line in lineList:
+                        TextList = line.split(separator)
+                        Data_list = [elem.strip() if elem is not None else "" for elem in TextList]
+                        print(Data_list)
+                        AddToCSV(output_filename, Data_list)
+
 
 
 if __name__ == '__main__':
     combine(folderPath, "listing", separator, "Output.csv")
+
