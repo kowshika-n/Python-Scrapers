@@ -8,7 +8,7 @@ separator = " | "
 
 
 def AddToCSV(file_name, TextList):
-    with open(file_name, "a+", newline='') as output_file:
+    with open(file_name, "a+", newline='', encoding='utf-8') as output_file:
         csv_writer = writer(output_file)
         csv_writer.writerow(TextList)
 
@@ -26,7 +26,7 @@ def combine(folderPath, text_filename_format, separator, output_filename):
             fileList.sort(key=os.path.getmtime)
             for file in fileList:
                 print(file)
-                with open(file, 'r') as f:
+                with open(file, 'r', encoding='utf-8') as f:
                     lineList = f.readlines()
                     TextList = []
                     for line in lineList:
@@ -38,5 +38,4 @@ def combine(folderPath, text_filename_format, separator, output_filename):
 
 
 if __name__ == '__main__':
-    combine(folderPath, "listing", separator, "Output.csv")
-
+    combine(folderPath, "Listing", separator, "Output.csv")
