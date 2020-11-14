@@ -13,14 +13,14 @@ jobs:
         with:
           python-version: 3.9.0
 
-      - name: Install dependencies with pipenv
+      - name: Install pipenv
+        run: pip install pipenv
+        
+      - name: Run tests
         run: |
-          pip install pipenv
-          pipenv --python python
-          pipenv install black isort flake8 mypy pytest --dev
-
-      - run: pipenv run isort --recursive --diff
-      - run: pipenv run black --check .
-      - run: pipenv run flake8
-      - run: pipenv run mypy
-      - run: pipenv run pytest --cov --cov-fail-under=100
+          pipenv install --dev
+          pipenv run pytest --cov --cov-fail-under=100
+          pipenv run isort --recursive --diff
+          pipenv run black --check .
+          pipenv run flake8
+          pipenv run mypy
