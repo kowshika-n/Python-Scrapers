@@ -18,7 +18,7 @@ options = webdriver.ChromeOptions()
 options.add_argument("--disable-notifications")
 options.add_argument("--start-maximized")
 options.add_argument("--disable-popups")
-DEFAULT_IMPLICIT_WAIT = 30
+DEFAULT_IMPLICIT_WAIT = 10
 
 
 def GetElement(driver, elementTag, locator='ID'):
