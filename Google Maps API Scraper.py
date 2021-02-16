@@ -4,7 +4,7 @@ from csv import reader, writer
 
 KEY = "AIza_YOUR_API_KEY"
 
-Add = """
+Addresses = """
 650 WARRENVILLE ROAD STE 500 IL
 2150 E LAKECOOK RD SUITE 320 IL
 """
@@ -21,14 +21,14 @@ def AddToCSV(file_name, TextList):
         csv_writer = writer(output_file)
         csv_writer.writerow(TextList)
 
-ADDRESSList = Add.split('\n')
+AddressList = Addresses.split('\n')
 # remove empty strings using list comprehension
-ADDRESSList = Unique([i.strip() for i in ADDRESSList if i.strip()])
-print(len(ADDRESSList))
+AddressList = Unique([i.strip() for i in AddressList if i.strip()])
+print(len(AddressList))
 
-for ADDRESS in ADDRESSList:
-    ADD = urllib.parse.quote_plus(ADDRESS)
-    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={ADD}&sensor=true&key={KEY}"
+for Address in AddressList:
+    add = urllib.parse.quote_plus(Address)
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={add}&sensor=true&key={KEY}"
     resp = requests.get(url)
     data = resp.json()
     zipCode = "-"
@@ -40,4 +40,5 @@ for ADDRESS in ADDRESSList:
             City = data['results'][0]['address_components'][-4]['long_name']
     except:
         pass
+    # store data to csv file
     AddToCSV("Address_Output.csv", [City, zipCode, ADDRESS])
