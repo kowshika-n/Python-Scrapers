@@ -8,8 +8,8 @@ import subprocess
 from twython import Twython
 from twython import TwythonError
 
-_version = '0.2'
-_author = 'Kowshika https://kowshika-n.github.io'
+_version = '0.3'
+_author = 'Kowshika @ https://kowshika-n.github.io'
 
 # Get from twitter dev.
 APP_KEY = 'APP_KEY'
@@ -133,10 +133,8 @@ def SearchTwitter(searchTerms):
                 if not search_results:
                     print(f'No search results found for : {query}')
                 else:
-                    print("\n")
-                    # print(search_results)
                     results = search_results['statuses']
-                    if len(results) <= 0:
+                    if not results:
                         print(f'No search results found for : {query}')
                     else:
                         print(f"TWEETS ABOUT {query} :  {len(results)}")
