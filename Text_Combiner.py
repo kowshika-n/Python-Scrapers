@@ -101,4 +101,4 @@ def jsonTxt2csv(folderPath, text_filename_format, output_filename, delete=False)
 
 if __name__ == '__main__':
     combineText(folderPath, "Shop", separator, "Output_Shop.csv", True)
-    jsonTxt2csv(folderPath, "link", "Output_links.csv", True)
+    jsonTxt2csv(folderPath, "link", separator, "Output_links.csv", True)
